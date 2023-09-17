@@ -1,0 +1,19 @@
+{
+    "name": "AI Diffraction",
+    "version": "1.0.0",
+    "description": "AI Diffraction",
+    "main": "index.html",
+    "scripts": {
+      "start": "serve"
+    },
+    "author": "Joseph Webb",
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/wephy/ai-diffraction/issues"
+    },
+    "homepage": "https://github.com/wephy/ai-diffraction",
+    "devDependencies": {
+      "serve": "^11.2.0"
+    },
+    "keywords": []
+}
