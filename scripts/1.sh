@@ -8,5 +8,4 @@
 
 module restore ai
 
-srun python src/train.py --dataroot ~/FDP --split ./data/splits/1 --gpu_ids -1 --input CD --name seed1_CD
-
+srun python src/train.py --dataroot ~/FDP --split ./data/splits/1 --gpu_ids -1 --input CD --name seed1_CD --no_vgg_loss
