@@ -6,6 +6,6 @@
 #SBATCH --partition=compute
 #SBATCH --time=30:00:00
 
-module restore felix-ml
+module restore ai
 
 srun python src/train.py --dataroot ~/FDP --split ./data/splits/0 --gpu_ids -1
