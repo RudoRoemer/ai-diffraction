@@ -8,5 +8,5 @@
 
 module restore ai
 
-srun python src/train.py --dataroot ~/FDP --split ./data/splits/I_-4_3_m --gpu_ids 0
+srun python src/train.py --dataroot ~/FDP --split ./data/splits/I_-4_3_m --gpu_ids 0 --input CD --name seedI_-4_3_m_CD
 
