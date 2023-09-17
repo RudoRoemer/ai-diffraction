@@ -14,7 +14,7 @@ class BaseOptions:
         self.parser.add_argument(
             "--name",
             type=str,
-            default="LACBED-to-CD",
+            default="CD-to-LACBED",
             help="name of the experiment. It decides where to store samples and models",
         )
         self.parser.add_argument(
