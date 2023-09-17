@@ -45,8 +45,7 @@ if __name__ == "__main__":
     print("#training images = %d" % dataset_size)
 
     model = create_model(opt)
-    if opt.gpu_ids != "-1":
-        print(opt.gpu_ids)
+    if opt.gpu_ids != []:
         model = model.module
     visualizer = Visualizer(opt)
     if opt.fp16:
