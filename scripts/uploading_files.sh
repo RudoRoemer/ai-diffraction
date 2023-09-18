@@ -7,4 +7,4 @@ gdrive files upload checkpoints/CD/seedF_-4_3_m_CD/ --recursive
 gdrive files upload checkpoints/CD/seedF_m_-3_m_CD/ --recursive
 gdrive files upload checkpoints/CD/seedI_-4_3_d_CD/ --recursive
 gdrive files upload checkpoints/CD/seedI_-4_3_m_CD/ --recursive
-gdrive files upload checkpoints/CD/seedP_-3_3_n_CD/ --recursive
+gdrive files upload checkpoints/CD/seedP_-4_3_n_CD/ --recursive
