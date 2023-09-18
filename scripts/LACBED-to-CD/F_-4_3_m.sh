@@ -4,9 +4,9 @@
 #SBATCH --cpus-per-task=42
 #SBATCH --mem-per-cpu=3850
 #SBATCH --partition=compute
-#SBATCH --time=10:00:00
+#SBATCH --time=20:00:00
 
 module restore ai
 
-srun python train.py --dataroot ~/FDP --split ./data/splits/F_-4_3_m --gpu_ids -1 --input LACBED --name seedF_-4_3_m_CD --no_vgg_loss --continue_train
+srun python train.py --dataroot ~/FDP --split ./data/splits/F_-4_3_m --gpu_ids -1 --input LACBED --name seedF_-4_3_m_CD --no_vgg_loss
 
