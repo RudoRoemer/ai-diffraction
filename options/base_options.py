@@ -43,7 +43,7 @@ class BaseOptions:
         )
         self.parser.add_argument(
             "--data_type",
-            default=8,
+            default=16,
             type=int,
             choices=[8, 16, 32],
             help="Supported data type i.e. 8, 16, 32 bit",
@@ -90,10 +90,10 @@ class BaseOptions:
 
         # for setting inputs
         self.parser.add_argument(
-            "--dataroot", type=str, default="D:\\felix-ml\\data\\FDP"
+            "--dataroot", type=str, default="./datasets/FDP"
         )
         self.parser.add_argument(
-            "--split", type=str, default="D:\\felix-ml\\data\\splits\\0"
+            "--split", type=str, default="./data/splits/0"
         )
         self.parser.add_argument(
             "--resize_or_crop",

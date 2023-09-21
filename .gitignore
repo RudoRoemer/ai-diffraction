@@ -1,5 +1,6 @@
 /checkpoints/
 /results/
+/datasets/FDP
 
 # # Lightning-Hydra-Template
 # configs/local/default.yaml

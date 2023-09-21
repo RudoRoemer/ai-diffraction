@@ -1,10 +1,3 @@
-gdrive files upload checkpoints/CD/seed0_CD/ --recursive
-gdrive files upload checkpoints/CD/seed1_CD/ --recursive
-gdrive files upload checkpoints/CD/seed2_CD/ --recursive
-gdrive files upload checkpoints/CD/seed3_CD/ --recursive
-gdrive files upload checkpoints/CD/seed4_CD/ --recursive
-gdrive files upload checkpoints/CD/seedF_-4_3_m_CD/ --recursive
-gdrive files upload checkpoints/CD/seedF_m_-3_m_CD/ --recursive
-gdrive files upload checkpoints/CD/seedI_-4_3_d_CD/ --recursive
-gdrive files upload checkpoints/CD/seedI_-4_3_m_CD/ --recursive
-gdrive files upload checkpoints/CD/seedP_-4_3_n_CD/ --recursive
+#!/bin/bash
+
+gdrive files upload checkpoints/ --recursive

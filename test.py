@@ -74,7 +74,7 @@ if __name__ == "__main__":
 
         visuals = OrderedDict(
             [
-                ("input_label", util.tensor2label(data["label"][0], opt.label_nc)),
+                # ("input_label", util.tensor2label(data["label"][0], opt.label_nc)),
                 ("synthesized_image", util.tensor2im(generated.data[0])),
             ]
         )

@@ -1,7 +1,7 @@
 from __future__ import print_function
 import torch
 import numpy as np
-from PIL import Image
+import cv2
 import numpy as np
 import os
 
@@ -38,8 +38,9 @@ def tensor2label(label_tensor, n_label, imtype=np.uint8):
 
 
 def save_image(image_numpy, image_path):
-    image_pil = Image.fromarray(image_numpy)
-    image_pil.save(image_path)
+    # image_pil = Image.fromarray()
+    im = cv2.normalize(cv2.cvtColor(image_numpy, cv2.COLOR_BGR2GRAY), None, 0, 255, norm_type=cv2.NORM_MINMAX)
+    cv2.imwrite(image_path, im)
 
 
 def mkdirs(paths):
