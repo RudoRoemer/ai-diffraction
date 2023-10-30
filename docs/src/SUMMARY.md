@@ -2,7 +2,6 @@
 
 [Home](0-title-page.md)
 [Introduction](1-introduction.md)
-[App](app.md)
 
 ## Getting started
 
