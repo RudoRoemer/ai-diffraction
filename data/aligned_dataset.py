@@ -28,12 +28,14 @@ class AlignedDataset(BaseDataset):
         ICSD_code = self.paths[self.phase][index]
         transform = transforms.ToTensor()
 
-        if self.input == "CD":
+        if self.input == "structure":
             A_path = os.path.join(self.root, ICSD_code, ICSD_code + "_structure.png")
             B_path = os.path.join(self.root, ICSD_code, ICSD_code + "_+0+0+0.png")
-        else:
+        elif self.input == "pattern":
             A_path = os.path.join(self.root, ICSD_code, ICSD_code + "_+0+0+0.png")
             B_path = os.path.join(self.root, ICSD_code, ICSD_code + "_structure.png")
+        else:
+            raise ValueError("input must be 'structure' or 'pattern'")
         A = cv2.imread(A_path)
         A_tensor = transform(A)
 

@@ -14,7 +14,7 @@ class BaseOptions:
         self.parser.add_argument(
             "--name",
             type=str,
-            default="CD-to-LACBED",
+            default="pattern",
             help="name of the experiment. It decides where to store samples and models",
         )
         self.parser.add_argument(
@@ -63,9 +63,9 @@ class BaseOptions:
         self.parser.add_argument(
             "--input",
             type=str,
-            default="CD",
-            choices=["CD", "LACBED"],
-            help="which data to use as the input [CD|LACBED]",
+            default="structure",
+            choices=["structure", "pattern"],
+            help="which data to use as the input [structure|pattern]",
         )
 
         # input/output sizes
@@ -89,12 +89,8 @@ class BaseOptions:
         )
 
         # for setting inputs
-        self.parser.add_argument(
-            "--dataroot", type=str, default="./datasets/FDP"
-        )
-        self.parser.add_argument(
-            "--split", type=str, default="./data/splits/0"
-        )
+        self.parser.add_argument("--dataroot", type=str, default="./datasets/lacbed")
+        self.parser.add_argument("--split", type=str, default="./data/splits/0")
         self.parser.add_argument(
             "--resize_or_crop",
             type=str,
@@ -198,7 +194,7 @@ class BaseOptions:
             help="# of encoder filters in the first conv layer",
         )
         self.parser.add_argument(
-            "--n_clusters", type=int, default=10, help="number of clusters for features"
+            "--n_clusters", type=int, default=4, help="number of clusters for features"
         )
 
         self.initialized = True

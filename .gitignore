@@ -1,6 +1,6 @@
 /checkpoints/
 /results/
-/datasets/FDP
+/datasets/lacbed
 
 # # Lightning-Hydra-Template
 # configs/local/default.yaml
