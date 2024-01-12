@@ -5,6 +5,7 @@ torchvision>=0.15.0
 # --------- others --------- #
 dominate          # HTML
 scipy             # visualizer
+scienceplots
 
 # pyrootutils     # standardizing the project root setup
 # pre-commit      # hooks for applying linters on commit
