@@ -2,8 +2,11 @@
 
 for PHASE in train test val
 do
-    for SPLIT in 0
+    for SPLIT in 5 6 7 8 9
     do
-        python test.py --dataroot datasets/FDP --gpu_ids 0 --split data/splits/random/${SPLIT} --input CD --name CD/seed${SPLIT}_CD --how_many 99999 --phase ${PHASE} --which_epoch latest
+        for EPOCH in 20 40 60 80 100
+        do
+            python test.py --dataroot datasets/lacbed --gpu_ids 0 --split datasets/splits/random/${SPLIT} --input structure --name pattern_random${SPLIT} --how_many 99999 --phase ${PHASE} --which_epoch ${EPOCH}
+        done
     done
 done
