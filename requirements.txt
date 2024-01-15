@@ -5,6 +5,8 @@ torchvision>=0.15.0
 # --------- others --------- #
 dominate          # HTML
 scipy             # visualizer
+opencv-python
+cmcrameri
 scienceplots
 
 # pyrootutils     # standardizing the project root setup

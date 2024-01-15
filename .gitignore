@@ -1,6 +1,22 @@
 /checkpoints/
 /results/
-/datasets/lacbed
+/datasets/FDP/
+
+# Which to keep
+!/datasets/FDP/91052/
+!/datasets/FDP/91224/
+!/datasets/FDP/159768/
+!/datasets/FDP/414383/
+!/datasets/FDP/54390/
+!/datasets/FDP/152259/
+!/datasets/FDP/391131/
+!/datasets/FDP/152794/
+!/datasets/FDP/162198/
+!/datasets/FDP/166923/
+!/datasets/FDP/194751/
+!/datasets/FDP/9633/
+!/datasets/FDP/68301/
+!/datasets/FDP/246965/
 
 # # Lightning-Hydra-Template
 # configs/local/default.yaml

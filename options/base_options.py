@@ -89,8 +89,8 @@ class BaseOptions:
         )
 
         # for setting inputs
-        self.parser.add_argument("--dataroot", type=str, default="./datasets/lacbed")
-        self.parser.add_argument("--split", type=str, default="./data/splits/0")
+        self.parser.add_argument("--dataroot", type=str, default="./datasets/FDP")
+        self.parser.add_argument("--split", type=str, default="./data/FDP_splits/random/0")
         self.parser.add_argument(
             "--resize_or_crop",
             type=str,
