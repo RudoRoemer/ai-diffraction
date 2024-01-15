@@ -18,7 +18,7 @@ kaggle datasets download wephys/felix-diffraction-patterns -p ./datasets --unzip
 
 To download the precomputed results, run:
 ```
-kaggle datasets download wephys/ai-diffraction-results --unzip
+kaggle datasets download wephys/felix-ai-results --unzip
 ```
 
 
