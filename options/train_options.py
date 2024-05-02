@@ -67,7 +67,7 @@ class TrainOptions(BaseOptions):
         self.parser.add_argument(
             "--niter_decay",
             type=int,
-            default=100,
+            default=0,
             help="# of iter to linearly decay learning rate to zero",
         )
         self.parser.add_argument(
