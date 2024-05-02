@@ -1,0 +1,110 @@
+
+#(C) 2019 by FIZ Karlsruhe - Leibniz Institute for Information Infrastructure.  All rights reserved.
+data_391131-ICSD
+_database_code_ICSD 391131
+_audit_creation_date 2005-10-01
+_chemical_name_systematic 'Mercury(II) silver(I) arsenide iodide'
+_chemical_formula_structural '(Hg7 As4) (Ag I3)2'
+_chemical_formula_sum 'Ag2 As4 Hg7 I6'
+_exptl_crystal_density_diffrn 7.85
+_publ_section_title
+
+;
+Synthesis, Crystal and Electronic Structure of [Hg7As4](AgI3)2, a Novel
+Supramolecular Complex with the Off-plane (AgI3)2(2-) Guest Anion.
+;
+loop_
+_citation_id
+_citation_journal_full
+_citation_year
+_citation_journal_volume
+_citation_page_first
+_citation_page_last
+_citation_journal_id_ASTM
+primary 'European Journal of Inorganic Chemistry' 2003 2003 1053 1057 EJICFO
+loop_
+_publ_author_name
+'Olenev, A.V.'
+'Baranov, A.I.'
+'Oleneva, O.S.'
+'Vorontsov, I.I.'
+'Antipin, M.Yu.'
+'Shevelkov, A.V.'
+_cell_length_a 13.1380(10)
+_cell_length_b 13.1380(10)
+_cell_length_c 13.1380(10)
+_cell_angle_alpha 90.
+_cell_angle_beta 90.
+_cell_angle_gamma 90.
+_cell_volume 2267.71
+_cell_formula_units_Z 4
+_symmetry_space_group_name_H-M 'P a -3'
+_symmetry_Int_Tables_number 205
+_refine_ls_R_factor_all 0.0677
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+1 '-z+1/2, x+1/2, y'
+2 'z+1/2, x, -y+1/2'
+3 'z, -x+1/2, y+1/2'
+4 '-z, -x, -y'
+5 'y, -z+1/2, x+1/2'
+6 '-y+1/2, z+1/2, x'
+7 'y+1/2, z, -x+1/2'
+8 '-y, -z, -x'
+9 'x+1/2, y, -z+1/2'
+10 'x, -y+1/2, z+1/2'
+11 '-x+1/2, y+1/2, z'
+12 '-x, -y, -z'
+13 'z+1/2, -x+1/2, -y'
+14 '-z+1/2, -x, y+1/2'
+15 '-z, x+1/2, -y+1/2'
+16 'z, x, y'
+17 '-y, z+1/2, -x+1/2'
+18 'y+1/2, -z+1/2, -x'
+19 '-y+1/2, -z, x+1/2'
+20 'y, z, x'
+21 '-x+1/2, -y, z+1/2'
+22 '-x, y+1/2, -z+1/2'
+23 'x+1/2, -y+1/2, -z'
+24 'x, y, z'
+loop_
+_atom_type_symbol
+_atom_type_oxidation_number
+Hg2+ 2
+I0+ -0.67
+As3- -3
+Ag1+ 1
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_symmetry_multiplicity
+_atom_site_Wyckoff_symbol
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_B_iso_or_equiv
+_atom_site_occupancy
+_atom_site_attached_hydrogens
+Hg1 Hg2+ 24 d 0.21223(6) 0.41653(7) 0.45209(7) 0.0341(3) 1 0
+Hg2 Hg2+ 4 b 0.5 0.5 0.5 0.0399(6) 1 0
+I1 I0+ 24 d 0.16590(10) 0.55237(10) 0.24534(10) 0.0270(4) 1 0
+As1 As3- 8 c 0.05283(13) 0.05283(13) 0.05283(13) 0.0131(6) 1 0
+As2 As3- 8 c 0.39026(13) 0.39026(13) 0.39026(13) 0.0143(7) 1 0
+Ag1 Ag1+ 8 c 0.2295(3) 0.2295(3) 0.2295(3) 0.101(2) 1 0
+loop_
+_atom_site_aniso_label
+_atom_site_aniso_type_symbol
+_atom_site_aniso_U_11
+_atom_site_aniso_U_22
+_atom_site_aniso_U_33
+_atom_site_aniso_U_12
+_atom_site_aniso_U_13
+_atom_site_aniso_U_23
+Hg1 Hg2+ 0.0198(5) 0.0440(5) 0.0384(6) 0.0086(4) 0.0120(3) 0.0017(4)
+Hg2 Hg2+ 0.0399(6) 0.0399(6) 0.0399(6) -0.0102(6) -0.0102(6) -0.0102(6)
+I1 I0+ 0.0260(7) 0.0296(7) 0.0255(7) 0.0073(6) 0.0032(6) 0.0034(6)
+As1 As3- 0.0131(6) 0.0131(6) 0.0131(6) 0.0026(7) 0.0026(7) 0.0026(7)
+As2 As3- 0.0143(7) 0.0143(7) 0.0143(7) 0.0014(7) 0.0014(7) 0.0014(7)
+Ag1 Ag1+ 0.101(2) 0.101(2) 0.101(2) 0.057(2) 0.057(2) 0.057(2)
+#End of TTdata_391131-ICSD

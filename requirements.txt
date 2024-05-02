@@ -8,6 +8,8 @@ scipy             # visualizer
 opencv-python
 cmcrameri
 scienceplots
+cmap
+
 
 # pyrootutils     # standardizing the project root setup
 # pre-commit      # hooks for applying linters on commit
