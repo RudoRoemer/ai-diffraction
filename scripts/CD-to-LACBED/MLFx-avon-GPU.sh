@@ -17,7 +17,7 @@ cat > ${jobfile} <<EOT
 #SBATCH --cpus-per-task=16
 #SBATCH --mem-per-cpu=3700
 #SBATCH --partition=gpu
-#SBATCH --time=00:50:00
+#SBATCH --time=48:00:00
 #SBATCH --gres=gpu:quadro_rtx_6000:1
 
 echo "--- START" $jobfile
