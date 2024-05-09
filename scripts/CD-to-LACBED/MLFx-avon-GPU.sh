@@ -2,8 +2,8 @@
 
 seed=${1:-0}
 datadir=${2:-./datasets/FDP}
-resultsdir=${3:-./data/FDP_splits/random/}
-options=${4:-}
+seedsdir=${3:-./data/FDP_splits/random/}
+options=${4:-""}
 
 jobfile="MLFx-train-"$seed".sh"
 jobdir="CD-Seed"$seed
@@ -30,7 +30,8 @@ pwd
 #srun python train.py --dataroot ./datasets/FDP --split ./data/FDP_splits/random/0 --gpu_ids 0 --input structure --name seed1_CD
 #--continue_train
 
-srun python train.py --dataroot $datadir --split $resultsdir/$seed --gpu_ids 0 --input structure --name $jobdir $options
+echo srun python train.py --dataroot $datadir --split $seedsdir/$seed --gpu_ids 0 --input structure --name $jobdir $options
+srun python train.py --dataroot $datadir --split $seedsdir/$seed --gpu_ids 0 --input structure --name $jobdir $options
 
 echo "--- DONE" $jobfile
 EOT
