@@ -1,6 +1,9 @@
 /checkpoints/
 /results/
 /datasets/FDP/*
+/scripts/Cubic CIFs/
+/scripts/Felix Input for AI Diffraction/
+/scripts/archive_data/
 
 # Which to keep
 !/datasets/FDP/9633/
