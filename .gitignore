@@ -1,9 +1,11 @@
 /checkpoints/
 /results/
-/datasets/FDP/*
+/datasets/
 /scripts/Cubic CIFs/
 /scripts/Felix Input for AI Diffraction/
 /scripts/archive_data/
+/scripts/mini_felix_output/
+/scripts/mini_felix_output_cleaned/
 
 # Which to keep
 !/datasets/FDP/9633/

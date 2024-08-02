@@ -65,20 +65,12 @@ class BaseModel(torch.nn.Module):
                 pretrained_dict = torch.load(save_path)
                 model_dict = network.state_dict()
                 try:
-                    pretrained_dict = {
-                        k: v for k, v in pretrained_dict.items() if k in model_dict
-                    }
+                    pretrained_dict = {k: v for k, v in pretrained_dict.items() if k in model_dict}
                     network.load_state_dict(pretrained_dict)
                     if self.opt.verbose:
-                        print(
-                            "Pretrained network %s has excessive layers; Only loading layers that are used"
-                            % network_label
-                        )
+                        print("Pretrained network %s has excessive layers; Only loading layers that are used" % network_label)
                 except:
-                    print(
-                        "Pretrained network %s has fewer layers; The following are not initialized:"
-                        % network_label
-                    )
+                    print("Pretrained network %s has fewer layers; The following are not initialized:" % network_label)
                     for k, v in pretrained_dict.items():
                         if v.size() == model_dict[k].size():
                             model_dict[k] = v
@@ -91,10 +83,7 @@ class BaseModel(torch.nn.Module):
                         not_initialized = Set()
 
                     for k, v in model_dict.items():
-                        if (
-                            k not in pretrained_dict
-                            or v.size() != pretrained_dict[k].size()
-                        ):
+                        if k not in pretrained_dict or v.size() != pretrained_dict[k].size():
                             not_initialized.add(k.split(".")[0])
 
                     print(sorted(not_initialized))

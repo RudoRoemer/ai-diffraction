@@ -51,9 +51,7 @@ if __name__ == "__main__":
     if opt.fp16:
         from apex import amp
 
-        model, [optimizer_G, optimizer_D] = amp.initialize(
-            model, [model.optimizer_G, model.optimizer_D], opt_level="O1"
-        )
+        model, [optimizer_G, optimizer_D] = amp.initialize(model, [model.optimizer_G, model.optimizer_D], opt_level="O1")
         model = torch.nn.DataParallel(model, device_ids=opt.gpu_ids)
     else:
         optimizer_G, optimizer_D = model.optimizer_G, model.optimizer_D
@@ -92,11 +90,7 @@ if __name__ == "__main__":
 
             # calculate final loss scalar
             loss_D = (loss_dict["D_fake"] + loss_dict["D_real"]) * 0.5
-            loss_G = (
-                loss_dict["G_GAN"]
-                + loss_dict.get("G_GAN_Feat", 0)
-                + loss_dict.get("G_VGG", 0)
-            )
+            loss_G = loss_dict["G_GAN"] + loss_dict.get("G_GAN_Feat", 0) + loss_dict.get("G_VGG", 0)
 
             ############### Backward Pass ####################
             # update generator weights
@@ -120,10 +114,7 @@ if __name__ == "__main__":
             ############## Display results and errors ##########
             ### print out errors
             if total_steps % opt.print_freq == print_delta:
-                errors = {
-                    k: v.data.item() if not isinstance(v, int) else v
-                    for k, v in loss_dict.items()
-                }
+                errors = {k: v.data.item() if not isinstance(v, int) else v for k, v in loss_dict.items()}
                 t = (time.time() - iter_start_time) / opt.print_freq
                 visualizer.print_current_errors(epoch, epoch_iter, errors, t)
                 visualizer.plot_current_errors(errors, total_steps)
@@ -145,10 +136,7 @@ if __name__ == "__main__":
 
             ### save latest model
             if total_steps % opt.save_latest_freq == save_delta:
-                print(
-                    "saving the latest model (epoch %d, total_steps %d)"
-                    % (epoch, total_steps)
-                )
+                print("saving the latest model (epoch %d, total_steps %d)" % (epoch, total_steps))
                 model.save("latest")
                 np.savetxt(iter_path, (epoch, epoch_iter), delimiter=",", fmt="%d")
 
@@ -157,17 +145,11 @@ if __name__ == "__main__":
 
         # end of epoch
         iter_end_time = time.time()
-        print(
-            "End of epoch %d / %d \t Time Taken: %d sec"
-            % (epoch, opt.niter + opt.niter_decay, time.time() - epoch_start_time)
-        )
+        print("End of epoch %d / %d \t Time Taken: %d sec" % (epoch, opt.niter + opt.niter_decay, time.time() - epoch_start_time))
 
         ### save model for this epoch
         if epoch % opt.save_epoch_freq == 0:
-            print(
-                "saving the model at the end of epoch %d, iters %d"
-                % (epoch, total_steps)
-            )
+            print("saving the model at the end of epoch %d, iters %d" % (epoch, total_steps))
             model.save("latest")
             model.save(epoch)
             np.savetxt(iter_path, (epoch + 1, 0), delimiter=",", fmt="%d")

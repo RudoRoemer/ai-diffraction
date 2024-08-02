@@ -2,6 +2,7 @@ import argparse
 import os
 from util import util
 import torch
+from datetime import datetime
 
 
 class BaseOptions:
@@ -10,11 +11,23 @@ class BaseOptions:
         self.initialized = False
 
     def initialize(self):
+        # custom options
+        self.parser.add_argument("--dataroot", type=str, default="./datasets/felix_output")
+        self.parser.add_argument("--split", type=str, default="./data/splits/0")
+        self.parser.add_argument(
+            "--direction",
+            type=int,
+            default=0,
+            choices=[0, 1],
+            help="0 for predicting diffraction patterns, 1 for predicting charge density",
+        )
+        self.parser.add_argument("--thickness", type=str, choices=["500", "1000", "1500", "2000"], default="2000")
+
         # experiment specifics
         self.parser.add_argument(
             "--name",
             type=str,
-            default="pattern",
+            default="",
             help="name of the experiment. It decides where to store samples and models",
         )
         self.parser.add_argument(
@@ -29,18 +42,14 @@ class BaseOptions:
             default="./checkpoints",
             help="models are saved here",
         )
-        self.parser.add_argument(
-            "--model", type=str, default="pix2pixHD", help="which model to use"
-        )
+        self.parser.add_argument("--model", type=str, default="pix2pixHD", help="which model to use")
         self.parser.add_argument(
             "--norm",
             type=str,
             default="instance",
             help="instance normalization or batch normalization",
         )
-        self.parser.add_argument(
-            "--use_dropout", action="store_true", help="use dropout for the generator"
-        )
+        self.parser.add_argument("--use_dropout", action="store_true", help="use dropout for the generator")
         self.parser.add_argument(
             "--data_type",
             default=16,
@@ -48,49 +57,23 @@ class BaseOptions:
             choices=[8, 16, 32],
             help="Supported data type i.e. 8, 16, 32 bit",
         )
-        self.parser.add_argument(
-            "--verbose", action="store_true", default=False, help="toggles verbose"
-        )
-        self.parser.add_argument(
-            "--fp16", action="store_true", default=False, help="train with AMP"
-        )
+        self.parser.add_argument("--verbose", action="store_true", default=False, help="toggles verbose")
+        self.parser.add_argument("--fp16", action="store_true", default=False, help="train with AMP")
         self.parser.add_argument(
             "--local_rank",
             type=int,
             default=0,
             help="local rank for distributed training",
         )
-        self.parser.add_argument(
-            "--input",
-            type=str,
-            default="structure",
-            choices=["structure", "pattern"],
-            help="which data to use as the input [structure|pattern]",
-        )
 
         # input/output sizes
-        self.parser.add_argument(
-            "--batchSize", type=int, default=16, help="input batch size"
-        )
-        self.parser.add_argument(
-            "--loadSize", type=int, default=128, help="scale images to this size"
-        )
-        self.parser.add_argument(
-            "--fineSize", type=int, default=128, help="then crop to this size"
-        )
-        self.parser.add_argument(
-            "--label_nc", type=int, default=0, help="# of input label channels"
-        )
-        self.parser.add_argument(
-            "--input_nc", type=int, default=3, help="# of input image channels"
-        )
-        self.parser.add_argument(
-            "--output_nc", type=int, default=3, help="# of output image channels"
-        )
+        self.parser.add_argument("--batchSize", type=int, default=16, help="input batch size")
+        self.parser.add_argument("--loadSize", type=int, default=128, help="scale images to this size")
+        self.parser.add_argument("--fineSize", type=int, default=128, help="then crop to this size")
+        self.parser.add_argument("--label_nc", type=int, default=0, help="# of input label channels")
+        self.parser.add_argument("--input_nc", type=int, default=3, help="# of input image channels")
+        self.parser.add_argument("--output_nc", type=int, default=3, help="# of output image channels")
 
-        # for setting inputs
-        self.parser.add_argument("--dataroot", type=str, default="./datasets/FDP")
-        self.parser.add_argument("--split", type=str, default="./data/FDP_splits/random/0")
         self.parser.add_argument(
             "--resize_or_crop",
             type=str,
@@ -103,9 +86,7 @@ class BaseOptions:
             help="if true, takes images in order to make batches, otherwise takes them randomly",
         )
         # self.parser.add_argument('--no_flip', action='store_true', help='if specified, do not flip the images for data argumentation')
-        self.parser.add_argument(
-            "--nThreads", default=4, type=int, help="# threads for loading data"
-        )
+        self.parser.add_argument("--nThreads", default=4, type=int, help="# threads for loading data")
         self.parser.add_argument(
             "--max_dataset_size",
             type=int,
@@ -114,9 +95,7 @@ class BaseOptions:
         )
 
         # for displays
-        self.parser.add_argument(
-            "--display_winsize", type=int, default=512, help="display window size"
-        )
+        self.parser.add_argument("--display_winsize", type=int, default=512, help="display window size")
         self.parser.add_argument(
             "--tf_log",
             action="store_true",
@@ -124,12 +103,8 @@ class BaseOptions:
         )
 
         # for generator
-        self.parser.add_argument(
-            "--netG", type=str, default="global", help="selects model to use for netG"
-        )
-        self.parser.add_argument(
-            "--ngf", type=int, default=64, help="# of gen filters in first conv layer"
-        )
+        self.parser.add_argument("--netG", type=str, default="global", help="selects model to use for netG")
+        self.parser.add_argument("--ngf", type=int, default=64, help="# of gen filters in first conv layer")
         self.parser.add_argument(
             "--n_downsample_global",
             type=int,
@@ -173,9 +148,7 @@ class BaseOptions:
             action="store_true",
             help="if specified, add encoded label features as input",
         )
-        self.parser.add_argument(
-            "--feat_num", type=int, default=3, help="vector length for encoded features"
-        )
+        self.parser.add_argument("--feat_num", type=int, default=3, help="vector length for encoded features")
         self.parser.add_argument(
             "--load_features",
             action="store_true",
@@ -193,9 +166,7 @@ class BaseOptions:
             default=16,
             help="# of encoder filters in the first conv layer",
         )
-        self.parser.add_argument(
-            "--n_clusters", type=int, default=4, help="number of clusters for features"
-        )
+        self.parser.add_argument("--n_clusters", type=int, default=4, help="number of clusters for features")
 
         self.initialized = True
 
@@ -203,6 +174,14 @@ class BaseOptions:
         if not self.initialized:
             self.initialize()
         self.opt = self.parser.parse_args()
+
+        if self.opt.name == "":
+            name1 = "predicting_diffraction_patterns" if self.opt.direction == 0 else "predicting_charge_density"
+            now = datetime.now().strftime(r"%Y-%m-%d_%H:%M:%S").replace(":", "_")
+            name2 = self.opt.split.replace("/", "_").replace(".", "").strip("_") + "_" + now
+            self.opt.checkpoints_dir = os.path.join(self.opt.checkpoints_dir, name1, self.opt.thickness)
+            self.opt.name = name2
+
         self.opt.isTrain = self.isTrain  # train or test
 
         str_ids = self.opt.gpu_ids.split(",")
