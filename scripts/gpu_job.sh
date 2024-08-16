@@ -27,4 +27,4 @@
 
 module restore ai
 cd ai-diffraction
-srun python train.py --dataroot ../datasets/felix_output_9940 --direction 0 --thickness 2000 --gpu_ids 0 --split ../datasets/splits/felix_output_9940/0
+srun python train.py --dataroot datasets/patterns-primary --direction 0 --thickness 2000 --gpu_ids 0 --split data/splits/patterns-primary/0

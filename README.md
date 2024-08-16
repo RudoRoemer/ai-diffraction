@@ -18,13 +18,6 @@ To download the dataset, run:
 kaggle datasets download -d wephys/electron-diffraction-patterns-for-ml --unzip
 ```
 
-#### Downloading precomputed results
-
-To download the precomputed results for 10 random splits for both predicting patterns and structures, run:
-```
-kaggle datasets download wephys/felix-ai-results --unzip
-```
-
 
 ## Training
 
