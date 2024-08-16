@@ -176,7 +176,7 @@ class BaseOptions:
         self.opt = self.parser.parse_args()
 
         if self.opt.name == "":
-            name1 = "predicting_diffraction_patterns" if self.opt.direction == 0 else "predicting_charge_density"
+            name1 = "predict_pattern" if self.opt.direction == 0 else "predict_potential"
             now = datetime.now().strftime(r"%Y-%m-%d_%H:%M:%S").replace(":", "_")
             name2 = self.opt.split.replace("/", "_").replace(".", "").strip("_") + "_" + now
             self.opt.checkpoints_dir = os.path.join(self.opt.checkpoints_dir, name1, self.opt.thickness)

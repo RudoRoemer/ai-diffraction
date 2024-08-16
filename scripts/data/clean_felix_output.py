@@ -4,10 +4,10 @@ import numpy as np
 import matplotlib.image as image
 import numba as nb
 import pandas as pd
+import shutil
 
-data_dir = "mini_felix_output/"
-cleaned_data_dir = "mini_felix_output_cleaned/"
-
+data_dir = "input_data/"
+cleaned_data_dir = "input_data_latest_cleaned/"
 os.makedirs(cleaned_data_dir, exist_ok=True)
 
 IMAGE_SIZE = 128
@@ -24,6 +24,7 @@ def get_lattice(arr, Cug, gVec):
                 ReDotgVec = i * gVec[n][0] + j * gVec[n][1]
                 ExpVar = np.exp(TWO_PI_I * ReDotgVec * FACTOR)
                 arr[j][i] += np.real(Cug[n] * ExpVar)
+
 
 for ICSD_code in os.listdir(data_dir):
     if ICSD_code.isdigit():
@@ -67,3 +68,6 @@ for ICSD_code in os.listdir(data_dir):
                     arr,
                     cmap="Greys",
                 )
+    if i != 4:
+        for w in (500, 1000, 1500, 2000):
+            shutil.rmtree(os.path.join(cleaned_data_dir, str(w), ICSD_code))

@@ -12,8 +12,7 @@ class AlignedDataset(BaseDataset):
         self.dataroot = opt.dataroot
         self.direction = opt.direction
         self.split = opt.split
-        self.thickness = opt.thickness
-        # self.ICSD_codes = os.listdir(self.dataroot)
+        self.thickness = opt.thickness.zfill(4)
         self.paths = {}
 
         with open(os.path.join(self.split, "train")) as file:
@@ -30,11 +29,11 @@ class AlignedDataset(BaseDataset):
         transform = transforms.ToTensor()
 
         if self.direction == 0:
-            A_path = os.path.join(self.dataroot, self.thickness, ICSD_code, "charge_density.png")
-            B_path = os.path.join(self.dataroot, self.thickness, ICSD_code, "diffraction_pattern.png")
+            A_path = os.path.join(self.dataroot, ICSD_code, "potential.png")
+            B_path = os.path.join(self.dataroot, ICSD_code, f"pattern_{self.thickness}.png")
         elif self.direction == 1:
-            A_path = os.path.join(self.dataroot, self.thickness, ICSD_code, "diffraction_pattern.png")
-            B_path = os.path.join(self.dataroot, self.thickness, ICSD_code, "charge_density.png")
+            A_path = os.path.join(self.dataroot, ICSD_code, f"pattern_{self.thickness}.png")
+            B_path = os.path.join(self.dataroot, ICSD_code, "potential.png")
 
         A = cv2.imread(A_path)
         A_tensor = transform(A)
