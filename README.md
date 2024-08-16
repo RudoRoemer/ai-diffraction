@@ -15,7 +15,7 @@ You will also have to authenticate yourself with an API token. Go to [user profi
 To download the dataset, run:
 
 ```
-kaggle datasets download wephys/felix-diffraction-patterns -p ./datasets --unzip
+kaggle datasets download -d wephys/electron-diffraction-patterns-for-ml --unzip
 ```
 
 #### Downloading precomputed results
