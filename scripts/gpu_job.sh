@@ -26,5 +26,5 @@
 ## Command(s) to run (example):
 
 module restore ai
-cd ai-diffraction
+cd ../ai-diffraction
 srun python train.py --dataroot datasets/patterns-primary --direction 0 --thickness 2000 --gpu_ids 0 --split data/splits/patterns-primary/0

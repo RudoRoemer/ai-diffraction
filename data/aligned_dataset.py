@@ -17,8 +17,6 @@ class AlignedDataset(BaseDataset):
 
         with open(os.path.join(self.split, "train")) as file:
             self.paths["train"] = file.read().split("\n")[:-1]
-        with open(os.path.join(self.split, "val")) as file:
-            self.paths["val"] = file.read().split("\n")[:-1]
         with open(os.path.join(self.split, "test")) as file:
             self.paths["test"] = file.read().split("\n")[:-1]
 
