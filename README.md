@@ -29,13 +29,7 @@ kaggle datasets download wephys/felix-ai-results --unzip
 ## Training
 
 ```
-python train.py --split data/FDP_splits/random/3 --gpu_ids 0 --input pattern --name structure_random3
-```
-
-and to continue training
-
-```
-python train.py --split data/FDP_splits/random/0 --gpu_ids 0 --input structure --name pattern_random0 --continue_train --which_epoch 10
+python train.py --dataroot datasets/patterns-primary --direction 0 --thickness 2000 --gpu_ids 0 --split data/splits/patterns-primary/0
 ```
 
 ## Predicting Patterns
@@ -44,7 +38,7 @@ To predict patterns, there must a structure as follows:
 ```txt
 ai-diffraction/
 ├── checkpoints/
-│   └── pattern_random0/
+│   └── experiment-name/
 │       ├── 10_net_D.pth
 │       └── 10_net_G.pth
 └── ...

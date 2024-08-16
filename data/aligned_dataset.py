@@ -9,10 +9,10 @@ class AlignedDataset(BaseDataset):
     def initialize(self, opt):
         self.opt = opt
         self.phase = opt.phase
-        self.root = opt.dataroot
-        self.input = opt.input
+        self.dataroot = opt.dataroot
+        self.direction = opt.direction
         self.split = opt.split
-        self.ICSD_codes = os.listdir(self.root)
+        self.thickness = opt.thickness.zfill(4)
         self.paths = {}
 
         with open(os.path.join(self.split, "train")) as file:
@@ -28,14 +28,13 @@ class AlignedDataset(BaseDataset):
         ICSD_code = self.paths[self.phase][index]
         transform = transforms.ToTensor()
 
-        if self.input == "structure":
-            A_path = os.path.join(self.root, ICSD_code, ICSD_code + "_structure.png")
-            B_path = os.path.join(self.root, ICSD_code, ICSD_code + "_+0+0+0.png")
-        elif self.input == "pattern":
-            A_path = os.path.join(self.root, ICSD_code, ICSD_code + "_+0+0+0.png")
-            B_path = os.path.join(self.root, ICSD_code, ICSD_code + "_structure.png")
-        else:
-            raise ValueError("input must be 'structure' or 'pattern'")
+        if self.direction == 0:
+            A_path = os.path.join(self.dataroot, ICSD_code, "potential.png")
+            B_path = os.path.join(self.dataroot, ICSD_code, f"pattern_{self.thickness}.png")
+        elif self.direction == 1:
+            A_path = os.path.join(self.dataroot, ICSD_code, f"pattern_{self.thickness}.png")
+            B_path = os.path.join(self.dataroot, ICSD_code, "potential.png")
+
         A = cv2.imread(A_path)
         A_tensor = transform(A)
 
