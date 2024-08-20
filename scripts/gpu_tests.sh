@@ -25,14 +25,21 @@
 #
 ## Command(s) to run (example):
 
-module restore ai
+module restore ai-diffraction-200824
+
+cwd=`pwd`
+#echo $cwd
+
+#for dir in checkpoints/predict_pattern/2000/*; do echo $dir; done
 
 # Loop through all subfolders in checkpoints/predict-potential
-for direction in "predict-potential"; do
+for direction in "predict_pattern"; do
     for epoch in {10..100..10}; do
         for thickness in "2000"; do
-            full_path="checkpoints/$direction/$thickness"
-            for dir in "$full_path"/*/; do
+            full_path="$cwd/checkpoints/${direction}/${thickness}"
+            for dir in $full_path/*; do
+		#echo $full_path
+		echo "--- working on "$dir
                 # Remove the trailing slash to get the folder name
                 experiment=$(basename "$dir")
 
@@ -45,8 +52,11 @@ for direction in "predict-potential"; do
                     # Run your command using the variables $name, $number, $epoch, and $phase
                     echo "Running command with folder: $name, number: $split, epoch: $epoch, phase: $phase"
 
-                    srun python train.py --dataroot datasets/patterns-primary --gpu_ids 0 --name $name --split data/splits/patterns-primary/$split --phase $phase --epoch $epoch --how_many 99999
+                    python test.py --dataroot datasets/patterns-primary --gpu_ids 0 --name $name --split data/splits/patterns-primary/$split --phase $phase --which_epoch $epoch --how_many 99999
+		done
             done
-        done
+	done
     done
 done
+
+exit
