@@ -32,7 +32,6 @@ for direction in "predict-potential"; do
     for epoch in {10..100..10}; do
         for thickness in "2000"; do
             full_path="checkpoints/$direction/$thickness"
-
             for dir in "$full_path"/*/; do
                 # Remove the trailing slash to get the folder name
                 experiment=$(basename "$dir")
@@ -47,6 +46,7 @@ for direction in "predict-potential"; do
                     echo "Running command with folder: $name, number: $split, epoch: $epoch, phase: $phase"
 
                     srun python train.py --dataroot datasets/patterns-primary --gpu_ids 0 --name $name --split data/splits/patterns-primary/$split --phase $phase --epoch $epoch --how_many 99999
+            done
         done
     done
 done
