@@ -43,16 +43,18 @@ for direction in "predict_pattern"; do
                 # Remove the trailing slash to get the folder name
                 experiment=$(basename "$dir")
 
+		name="$direction/$thickness/$experiment"
+		
                 split=$(basename "$name" | awk -F'_' '{print $4}')
-
-                name="$direction/$thickness/$experiment"
+		echo "split: "$split
 
                 # Loop through the phases "test" and "train"
                 for phase in "test" "train"; do
                     # Run your command using the variables $name, $number, $epoch, and $phase
                     echo "Running command with folder: $name, number: $split, epoch: $epoch, phase: $phase"
 
-                    python test.py --dataroot datasets/patterns-primary --gpu_ids 0 --name $name --split data/splits/patterns-primary/$split --phase $phase --which_epoch $epoch --how_many 99999
+		    echo 
+                    python test.py --dataroot datasets/patterns-primary --gpu_ids 0 --name $name --direction 0 --split data/splits/patterns-primary/$split --phase $phase --which_epoch $epoch --how_many 99999
 		done
             done
 	done
