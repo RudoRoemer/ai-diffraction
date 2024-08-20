@@ -39,6 +39,10 @@ ai-diffraction/
 where 10_net_D.pth and 10_net_G.pth are epoch 10 models for the discriminator and generator respectively, and they are fall under the an arbitrarily chosen name 'pattern_random0'. Using these we can predicting charge density structures for all ML phases, the first five random patterns splits, and for epochs 10.
 
 ```sh
+
+python test.py --dataroot datasets/patterns-primary --gpu_ids 0 --split data/splits/patterns-primary/0 --direction 0 --name "predict_pattern/2000/data_splits_patterns-primary_0_2024-08-16_19_31_12" --how_many 99999 --phase test --which_epoch latest
+
+
 for PHASE in train test val
 do
     for SPLIT in 0

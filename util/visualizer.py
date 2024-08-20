@@ -34,9 +34,7 @@ class Visualizer:
         self.log_name = os.path.join(opt.checkpoints_dir, opt.name, "loss_log.txt")
         with open(self.log_name, "a") as log_file:
             now = time.strftime("%c")
-            log_file.write(
-                "================ Training Loss (%s) ================\n" % now
-            )
+            log_file.write("================ Training Loss (%s) ================\n" % now)
 
     # |visuals|: dictionary of images to display or save
     def display_current_results(self, visuals, epoch, step):
@@ -66,20 +64,14 @@ class Visualizer:
             for label, image_numpy in visuals.items():
                 if isinstance(image_numpy, list):
                     for i in range(len(image_numpy)):
-                        img_path = os.path.join(
-                            self.img_dir, "epoch%.3d_%s_%d.jpg" % (epoch, label, i)
-                        )
+                        img_path = os.path.join(self.img_dir, "epoch%.3d_%s_%d.jpg" % (epoch, label, i))
                         util.save_image(image_numpy[i], img_path)
                 else:
-                    img_path = os.path.join(
-                        self.img_dir, "epoch%.3d_%s.jpg" % (epoch, label)
-                    )
+                    img_path = os.path.join(self.img_dir, "epoch%.3d_%s.jpg" % (epoch, label))
                     util.save_image(image_numpy, img_path)
 
             # update website
-            webpage = html.HTML(
-                self.web_dir, "Experiment name = %s" % self.name, refresh=30
-            )
+            webpage = html.HTML(self.web_dir, "Experiment name = %s" % self.name, refresh=30)
             for n in range(epoch, 0, -1):
                 webpage.add_header("epoch [%d]" % n)
                 ims = []
@@ -102,21 +94,15 @@ class Visualizer:
                     webpage.add_images(ims, txts, links, width=self.win_size)
                 else:
                     num = int(round(len(ims) / 2.0))
-                    webpage.add_images(
-                        ims[:num], txts[:num], links[:num], width=self.win_size
-                    )
-                    webpage.add_images(
-                        ims[num:], txts[num:], links[num:], width=self.win_size
-                    )
+                    webpage.add_images(ims[:num], txts[:num], links[:num], width=self.win_size)
+                    webpage.add_images(ims[num:], txts[num:], links[num:], width=self.win_size)
             webpage.save()
 
     # errors: dictionary of error labels and values
     def plot_current_errors(self, errors, step):
         if self.tf_log:
             for tag, value in errors.items():
-                summary = self.tf.Summary(
-                    value=[self.tf.Summary.Value(tag=tag, simple_value=value)]
-                )
+                summary = self.tf.Summary(value=[self.tf.Summary.Value(tag=tag, simple_value=value)])
                 self.writer.add_summary(summary, step)
 
     # errors: same format as |errors| of plotCurrentErrors
@@ -134,7 +120,10 @@ class Visualizer:
     def save_images(self, webpage, visuals, image_path):
         image_dir = webpage.get_image_dir()
         short_path = ntpath.basename(image_path[0])
-        name = os.path.splitext(short_path)[0]
+        code = os.path.normpath(image_path[0]).split(os.path.sep)[-2]
+        name = code + "_" + os.path.splitext(short_path)[0]
+
+        # print(code)
 
         webpage.add_header(name)
         ims = []
